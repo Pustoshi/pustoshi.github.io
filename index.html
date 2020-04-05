@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+	<head>
+
+		<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+		
+		<link rel="manifest" href="favicon/site.webmanifest">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+		<meta name="description" content=""/>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		
+		<link href="https://fonts.googleapis.com/css?family=Archivo&display=swap" rel="stylesheet" />
+		<title>PUSTOSHI</title>
+
+		<meta property="og:site_name" content="pustoshi.com" />
+		<meta property="og:locale" content="sv_se" />
+		<meta property="og:image" content="http://www.pustoshi.com/images/PICTURE2.jpeg" />
+		<meta property="og:image:secure_url" content="https://www.pustoshi.com/images/PICTURE2.jpeg" />
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://www.pustoshi.com/" />
+		<meta property="og:title" content="Dina Zhumasheva - Product Designer" />
+		<meta property="og:author" content="Dina Zhumasheva" />
+		<meta property="og:description" content="Dina Zhumasheva is a creative UX/UI product designer with 5+ years of experience, based in Stockholm. She has worked in a diverse set of companies, ranging from design studios to tech." />
+		<meta property="fb:app_id" content="PUSTOSHI"/>
+	</head>
+	<body style="padding-bottom: 50vh; margin: auto; background-color: #161616;">
+		<canvas id="canvas"></canvas>
+		<div class="container">
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="title-text col-11" style="margin-top: 80px;">
+					<div class="gradient text-clip">Hi,</br>I'm Dina</div>
+				</div>
+			</div>
+
+			<div class="scale-on-scroll" style="margin-top: 70vh; position: relative; overflow: visible;">
+				<div class="row" style="padding-top:5%;">
+					<div class="col-1"></div>
+					<div class="bread-text col-11">
+						A Stockholm based designer with <span class="important-text"> 5+ years </span> of work experience. I create awesome, user-friendly and visually pleasing UX/UI experiences.
+					</div>
+				</div>
+				<div class="row" style="padding-top:5%;">
+					<div class="col-1"></div>
+					<div class="bread-text col-11">
+						Below is a selection of my case studies:
+					</div>
+				</div>
+				<div class="row" style="padding-top: 15%">
+					<div class="col-1"></div>
+					<div class="front-page-text pop gradient-hover col-11">
+						<a onclick="OpenPopup('/pages/enerfy/')">Enerfy&emsp;</a>
+						<div style="font-family:arial;">&#8594;</div>
+					</div>
+				</div>
+				<div class="row" style="padding-top: 5%">
+					<div class="col-1"></div>
+					<div class="front-page-text pop gradient-hover col-11">
+						<a onclick="OpenPopup('/pages/tubes/')">Tubes&emsp;</a>
+						<div style="font-family:arial;">&#8594;</div>
+					</div>
+				</div>
+				<div class="row" style="padding-top: 5%">
+					<div class="col-1"></div>
+					<div class="front-page-text pop gradient-hover col-11">
+						<a onclick="OpenPopup('/pages/profoto/')">Profoto&emsp;</a>
+						<div style="font-family:arial;">&#8594;</div>
+					</div>
+				</div>
+				<div class="row" style="padding-top: 5%">
+					<div class="col-1"></div>
+					<div class="front-page-text pop gradient-hover col-11">
+						<a onclick="OpenPopup('/pages/wital/')">Wital&emsp;</a>
+						<div style="font-family:arial;">&rarr;</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="banner-container">
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-3 banner-link">
+					<a class="gradient text-clip" href="https://www.behance.net/pustoshi">Behance</a>
+				</div>
+				<div class="col-6 banner-link">
+					<a class="gradient text-clip" href="mailto:dina@pustoshi.com">dina@pustoshi.com</a>
+				</div>
+				<div class="col-2 banner-link">
+					<a class="gradient text-clip" href="data/resume.pdf" target="_blank">Resume</a>
+					<!--<div class="gradient text-clip" onclick="OpenPopup('/data/resume.pdf')">Resume</div>-->
+				</div>
+			</div>
+		</div>
+		<div id="popup" class="popup-window"  onclick="ClosePopup()">
+			<div class="popup-container" style="width: 100%; height:100%;"></div>
+		</div>
+	</body>
+	<script src="raymarch.frag"></script>
+	<script src="gl.js"></script>
+	<script src="main.js"></script>
+</html>

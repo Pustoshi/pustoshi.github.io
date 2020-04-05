@@ -1,0 +1,426 @@
+
+@font-face {
+	font-family: Wremena;
+	font-weight: normal;
+	font-style: normal;
+	src: url('font/Wremena\ Regular.otf') format('opentype');
+}
+
+@font-face {
+	font-family: Wremena-Light;
+	font-weight: normal;
+	font-style: normal;
+	src: url('font/Wremena\ Light.otf') format('opentype');
+}
+
+@font-face {
+	font-family: Wremena;
+	font-weight: bold;
+	font-style: normal;
+	src: url('font/Wremena\ Bold.otf') format('opentype');
+}
+
+:root
+{
+	--fadeout-time: 1s;
+	--fadein-time: 1.5s;
+	--font-size-big: 7vmax;
+	--font-size-medium: 4vmax;
+	--font-size-small: 2vmax;
+	--font-size-tiny: 1.5vmax;
+	--fast-fade-time: 0.5s;
+
+	--title-font: Arial;
+	--text-font: Arial;
+}
+
+a
+{
+	color: white;
+	text-decoration: none;
+	outline: none;
+	border: none;
+}
+
+body
+{
+	background-color: #161616;
+	font-family: Arial;
+	font-size: 1em;
+	color: white;
+
+	--scrollbar-width: calc(100vw - 100%);
+	--scrollbar-height: calc(100vh - 100%);
+}
+
+canvas
+{
+	position: absolute;
+	float:left;
+}
+
+video
+{
+	position: absolute;
+	float:left;
+}
+
+*
+{
+	box-sizing: border-box;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"]
+{
+	float: left;
+	padding: 1px;
+	position: relative;
+
+	display: -webkit-flex;
+	display: flex;
+}
+
+[class*="col-"] div
+{
+	flex: auto;
+}
+
+.container
+{
+	max-width: 85%;
+	margin: auto;
+	overscroll-behavior: none;
+}
+
+.row
+{
+	position: relative;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+::selection
+{
+	background: none;
+}
+
+
+img
+{
+	width:100%;
+	height:100%;
+}
+
+.banner-container
+{
+	left: 0;
+	right: 0;
+	margin: auto;
+	position: fixed;
+	bottom: 7vh;
+	max-width: 85%;
+}
+
+.banner-link
+{
+	color: white;
+	font-family: var(--text-font);
+	letter-spacing: 0px;
+	line-height: 2em;
+	font-size: var(--font-size-tiny);
+}
+
+.front-page-text
+{
+	font-size: var(--font-size-big);
+	position: relative;
+	letter-spacing: -0.03em;
+	cursor: pointer;
+	float: left;
+}
+
+.bread-text
+{
+	font-family: var(--text-font);
+	letter-spacing: 0px;
+	line-height: 1em;
+	font-size: var(--font-size-medium);
+}
+
+.important-text
+{
+	color: #CC3D00;
+	display: contents;
+}
+
+.title-text
+{
+	font-family: var(--title-font);
+	font-size: var(--font-size-big);
+	letter-spacing: -0.05em;
+	position: relative;
+	float: left;
+}
+
+.fade-on-scroll
+{
+	opacity: 0%;
+}
+
+.scale-on-scroll
+{
+	transform: scale(0.8, 0.8);
+	opacity: 0%;
+	overflow: hidden;
+}
+
+@keyframes fadein-anim
+{
+	0% { opacity: 0%; }
+	100% { opacity: 100%; }
+}
+
+.gradient
+{
+	animation: gradient-anim 15s ease infinite, fadein-anim 3s ease-in;
+	background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(180,217,197,1) 51%, rgba(148,187,233,1) 100%);
+	background-size: 400% 400%;
+	color: transparent;
+}
+
+.text-clip
+{
+	background-clip: text;
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	-o-background-clip: text;
+}
+
+@keyframes gradient-anim
+{
+	0% {  background-position: 0% 100%; }
+	50% {  background-position: 100% 50%; }
+	100% {  background-position: 0% 100%; }
+}
+
+.fadein
+{
+	opacity: 100%;
+	transition: all var(--fadein-time) ease-in; 
+	-webkit-transition: all var(--fadein-time) ease-in;
+	-moz-transition: all var(--fadein-time) ease-in;
+	-o-transition: all var(--fadein-time) ease-in;
+}
+
+.fadeout
+{
+	opacity: 0%;
+	transition: all var(--fadeout-time) ease-out;
+	-webkit-transition: all var(--fadeout-time) ease-out;
+	-moz-transition: all var(--fadeout-time) ease-out;
+	-o-transition: all var(--fadeout-time) ease-out;
+}
+
+.scalein
+{
+	transform: scale(1, 1);
+	transform-origin: bottom center;
+	transition: all var(--fadein-time) ease-in; 
+	-webkit-transition: all var(--fadein-time) ease-in;
+	-moz-transition: all var(--fadein-time) ease-in;
+	-o-transition: all var(--fadein-time) ease-in;
+}
+
+.scaleout
+{
+	transform: scale(0.8, 0.8);
+	transform-origin: bottom center;
+	transition: all var(--fadeout-time) ease-out;
+	-webkit-transition: all var(--fadeout-time) ease-out;
+	-moz-transition: all var(--fadeout-time) ease-out;
+	-o-transition: all var(--fadeout-time) ease-out;
+}
+
+@media (hover: hover)
+{
+	.gradient-hover *
+	{
+		animation: gradient-anim 15s ease infinite;
+		background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(180,217,197,1) 51%, rgba(148,187,233,1) 100%);
+		background-size: 400% 400%;
+		background-clip: text;
+		-webkit-background-clip: text;
+		-moz-background-clip: text;
+		-o-background-clip: text;
+		color: white;
+
+		transition: all var(--fadeout-time) ease-out;
+		-webkit-transition: all var(--fadeout-time) ease-out;
+		-moz-transition: all var(--fadeout-time) ease-out;
+		-o-transition: all var(--fadeout-time) ease-out;
+	}
+
+	.gradient-hover:hover *
+	{
+		color: transparent;
+		transition: all var(--fadeout-time) ease-out;
+		-webkit-transition: all var(--fadeout-time) ease-out;
+		-moz-transition: all var(--fadeout-time) ease-out;
+		-o-transition: all var(--fadeout-time) ease-out;		
+	}
+	.pop
+	{
+		opacity: 30%;
+		transform: translateX(0vw);
+		-webkit-transform: translateX(0vw);
+		transition: all var(--fadeout-time) ease-out;
+		-webkit-transition: all var(--fadeout-time) ease-out;
+		-moz-transition: all var(--fadeout-time) ease-out;
+		-o-transition: all var(--fadeout-time) ease-out;
+	}
+
+	.pop:hover
+	{
+		opacity: 100%;
+		transform: translateX(2vw);
+		-webkit-transform: translateX(2vw);
+		transition: all var(--fadeout-time) ease-out;
+		-webkit-transition: all var(--fadeout-time) ease-out;
+		-moz-transition: all var(--fadeout-time) ease-out;
+		-o-transition: all var(--fadeout-time) ease-out;
+	}
+	
+	div.pop div
+	{
+		opacity: 0%;
+		transition: all var(--fadein-time) ease-out; 
+		-webkit-transition: all var(--fadein-time) ease-out;
+		-moz-transition: all var(--fadein-time) ease-out;
+		-o-transition: all var(--fadein-time) ease-out;
+	}
+
+	div.pop:hover div
+	{		
+		opacity: 100%;
+		transition: all var(--fadein-time) ease-in; 
+		-webkit-transition: all var(--fadein-time) ease-in;
+		-moz-transition: all var(--fadein-time) ease-in;
+		-o-transition: all var(--fadein-time) ease-in;
+	}
+
+	.must-support-hover
+	{
+		display: inherit;
+		pointer-events: none;
+	}
+}
+
+/* If we don't support hover... (phones and tablets) */
+@media (hover: none)
+{
+	.pop
+	{
+		opacity: 100%;
+	}
+
+	.gradient-hover
+	{
+		
+	}
+	
+	/*  Make all pop child divs opaque */
+	div.pop div
+	{
+		opacity: 100%;
+	}
+
+	div.pop:hover div
+	{
+		opacity: 100%;
+	}
+
+	/* Also define the rule which hides elements which should only show if hover is enabled */
+	.must-support-hover
+	{
+		display: none;
+		pointer-events: none;
+	}
+}
+
+.main-image
+{
+	position: absolute;
+	z-index: -1;
+	left: 5vw;
+}
+
+.main-image img
+{
+	width: auto;
+	height: 70vh;
+}
+
+.popup-window
+{
+	position: fixed;
+	left: 0vw;
+	top: 0vh;
+	width: 0vw;
+	height: 0vh;
+	padding: 5px 0px 5px 0px;
+	border-radius: 5px;
+	transition: width 0.5s 0.5s, height 0.5s, border 0.5s 0.5s, background-color 0.5s 0.5s, border-radius 0.5s;
+
+	animation: gradient-anim 15s ease infinite, fadein-anim 3s ease-in;
+	background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(180,217,197,1) 51%, rgba(148,187,233,1) 100%);
+	background-size: 400% 400%;
+}
+
+.popup-window iframe
+{	
+	width: calc(100% + var(--scrollbar-width) + 15vw);
+	margin-left: -7.5vw;
+	height: 100%;
+	overflow: hidden;
+	border: 0;
+}
+
+.popup-container
+{
+	opacity: 0%;
+	transition: opacity 0.5s;
+	background-color: #161616;
+	overflow: hidden;
+}
+
+.fadein-frame
+{
+	opacity: 100%;
+	transition: opacity 0.5s;
+}
+
+.popup-window-open
+{
+	width: calc(100vw - var(--scrollbar-width));
+	height: calc(100vh - var(--scrollbar-height));
+	padding: 5px 5px 5px 5px;
+	border-radius: 0px;
+	transition: width 0.5s, height 0.5s 0.5s ease-out, border-color 0.5s, background-color 0.5s, border-radius 0.5s 0.5s, padding-x 0.5s;
+}

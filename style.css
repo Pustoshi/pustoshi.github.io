@@ -20,6 +20,14 @@
 	src: url('font/Wremena\ Bold.otf') format('opentype');
 }
 
+h1.center{
+	font-size: 7vmax;
+	text-align: left;
+}
+
+h2{
+	font-size: 6vmax;
+}
 :root
 {
 	--fadeout-time: 1s;
@@ -246,7 +254,7 @@ img
 .fadein
 {
 	opacity: 100%;
-	transition: all var(--fadein-time) ease-in; 
+	transition: all var(--fadein-time) ease-in;
 	-webkit-transition: all var(--fadein-time) ease-in;
 	-moz-transition: all var(--fadein-time) ease-in;
 	-o-transition: all var(--fadein-time) ease-in;
@@ -265,7 +273,7 @@ img
 {
 	transform: scale(1, 1);
 	transform-origin: bottom center;
-	transition: all var(--fadein-time) ease-in; 
+	transition: all var(--fadein-time) ease-in;
 	-webkit-transition: all var(--fadein-time) ease-in;
 	-moz-transition: all var(--fadein-time) ease-in;
 	-o-transition: all var(--fadein-time) ease-in;
@@ -306,7 +314,7 @@ img
 		transition: all var(--fadeout-time) ease-out;
 		-webkit-transition: all var(--fadeout-time) ease-out;
 		-moz-transition: all var(--fadeout-time) ease-out;
-		-o-transition: all var(--fadeout-time) ease-out;		
+		-o-transition: all var(--fadeout-time) ease-out;
 	}
 	.pop
 	{
@@ -329,20 +337,20 @@ img
 		-moz-transition: all var(--fadeout-time) ease-out;
 		-o-transition: all var(--fadeout-time) ease-out;
 	}
-	
+
 	div.pop div
 	{
 		opacity: 0%;
-		transition: all var(--fadein-time) ease-out; 
+		transition: all var(--fadein-time) ease-out;
 		-webkit-transition: all var(--fadein-time) ease-out;
 		-moz-transition: all var(--fadein-time) ease-out;
 		-o-transition: all var(--fadein-time) ease-out;
 	}
 
 	div.pop:hover div
-	{		
+	{
 		opacity: 100%;
-		transition: all var(--fadein-time) ease-in; 
+		transition: all var(--fadein-time) ease-in;
 		-webkit-transition: all var(--fadein-time) ease-in;
 		-moz-transition: all var(--fadein-time) ease-in;
 		-o-transition: all var(--fadein-time) ease-in;
@@ -365,9 +373,9 @@ img
 
 	.gradient-hover
 	{
-		
+
 	}
-	
+
 	/*  Make all pop child divs opaque */
 	div.pop div
 	{
@@ -417,7 +425,7 @@ img
 }
 
 .popup-window iframe
-{	
+{
 	width: calc(100% + var(--scrollbar-width) + 15vw);
 	margin-left: -7.5vw;
 	height: 100%;

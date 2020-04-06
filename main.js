@@ -147,18 +147,18 @@ window.onload = function()
 													}, 500);
 									 }
 									);
-		
+
 		if (hasGL)
 		{
 			var frameElapsedTime = Date.now() - frameTime;
 			frameTime = Date.now();
 			var elapsedTime = Date.now() - startTime;
 
-		
+
 			// if elapsed time is too big, reset startTime to avoid precision issues
 			if (elapsedTime > 1000000)
 				startTime = Date.now();
-			
+
 			DrawGL(elapsedTime, frameElapsedTime);
 		}
 		update(Update);

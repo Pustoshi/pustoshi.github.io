@@ -130,19 +130,21 @@ window.onload = function()
 	var elementsToNotifyScroll = document.querySelectorAll('.react-on-scroll');
 
 	// connect to websocket
-	const socket = new WebSocket("ws://www.pustoshi.com:8080/fetchf");
+	/*
+	const socket = new WebSocket("ws://www.pustoshi.com:8080/fetch");
 	socket.addEventListener(
 		"open",
 		function(ev)
 		{
 		});
 	socket.addEventListener(
-		"error",
+		"close",
 		function(ev)
 		{
 			console.log("Connection closed: " + ev.reason);
+			socket.close();
 		});
-
+	*/
 	// this function runs whenever we need a new animation frame
 	var startTime = Date.now();
 	var frameTime = Date.now();

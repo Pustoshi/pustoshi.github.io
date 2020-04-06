@@ -187,16 +187,39 @@ img
 	float: left;
 }
 
-.fade-on-scroll
+/*
+  Use class to make element react to scrolling,
+  then add scale-on-scroll, fade-on-scroll, or scroll-right/left-on-scroll
+  for individual components
+*/
+.react-on-scroll
 {
-	opacity: 0%;
+	--factor: 0.0;
+	--scale: 1;
+	--translate-x: 0;
+	overflow: hidden;
+	transform: translateX(var(--translate-x)) scale(var(--scale));
+	opacity: var(--opacity);
 }
 
 .scale-on-scroll
 {
-	transform: scale(0.8, 0.8);
-	opacity: 0%;
-	overflow: hidden;
+	--scale: var(--scroll-factor, 1);
+}
+
+.fade-on-scroll
+{
+	--opacity: calc(var(--scroll-factor, 1.0) * 100%);
+}
+
+.scroll-right-on-scroll
+{
+	--translate-x: calc(var(--scroll-factor, 0.0) * 100vw);
+}
+
+.scroll-left-on-scroll
+{
+	--translate-x: calc(var(--scroll-factor, 0.0) * -100vw);
 }
 
 @keyframes fadein-anim
@@ -396,7 +419,7 @@ img
 	border-radius: 5px;
 	transition: width 0.5s 0.5s, height 0.5s, border 0.5s 0.5s, background-color 0.5s 0.5s, border-radius 0.5s;
 
-	animation: gradient-anim 15s ease infinite, fadein-anim 3s ease-in;
+	animation: gradient-anim 15s ease infinite;
 	background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(180,217,197,1) 51%, rgba(148,187,233,1) 100%);
 	background-size: 400% 400%;
 }

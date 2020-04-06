@@ -127,8 +127,21 @@ window.onload = function()
 	{
 		window.setTimeout(callback, 1000/60);
 	};
-	var elementsToFade = document.querySelectorAll('.fade-on-scroll');
-	var elementsToScale = document.querySelectorAll('.scale-on-scroll');
+	var elementsToNotifyScroll = document.querySelectorAll('.react-on-scroll');
+
+	// connect to websocket
+	const socket = new WebSocket("ws://www.pustoshi.com:8080/fetchf");
+	socket.addEventListener(
+		"open",
+		function(ev)
+		{
+		});
+	socket.addEventListener(
+		"error",
+		function(ev)
+		{
+			console.log("Connection closed: " + ev.reason);
+		});
 
 	// this function runs whenever we need a new animation frame
 	var startTime = Date.now();
@@ -136,17 +149,17 @@ window.onload = function()
 	function Update()
 	{
 		// loop through our elements that should fade when we scroll
-		Array.prototype.forEach.call(elementsToScale,
-									 function(element)
-									 {
-										 OnScrollIn(element,
-													function(factor, element)
-													{
-														element.style.opacity = factor;
-														element.style.transform = `scale(${factor}, ${factor})`;
-													}, 500);
-									 }
-									);
+		Array.prototype.forEach.call(
+			elementsToNotifyScroll,
+			function(element)
+			{
+				OnScrollIn(element,
+						   function(factor, element)
+						   {
+							   element.style.setProperty("--scroll-factor", factor);
+						   }, 500);
+			}
+		);
 		
 		if (hasGL)
 		{

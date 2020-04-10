@@ -12,7 +12,6 @@
 }
 
 .content {
-  overflow: scroll;
   max-height: 100%;
 }
 
@@ -96,8 +95,26 @@ a.footer{
   font-size: 7vmax;
   text-align: center;
   width: 100%;
+  cursor: pointer;
 }
 
 .video-block{
 position: relative;
+}
+
+.image-box
+{
+	position: absolute;
+	--opacity: calc(1.0 - var(--scroll-factor));
+	--scale: calc(0.3 + var(--scroll-factor));
+	transform-origin: bottom right;
+	top: -10vh;
+	left: 20vw;
+	--scroll-multiplier: 2.0;
+}
+
+.image-box-img
+{
+	width: 100vw;
+	height: 100vh;
 }

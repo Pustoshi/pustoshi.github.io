@@ -19,7 +19,7 @@ var posX = 0.0;
 var posY = 0.0;
 var targetPosX = 0.0;
 var targetPosY = 0.0;
-
+var pauseGL = false;
 //------------------------------------------
 /**
  */
@@ -148,20 +148,22 @@ function SetupGL()
  */
 function DrawGL(time, frameTime)
 {
-	context.clear(context.COLOR_BUFFER_BIT);
-	var lerp = time / 1000;
-	context.uniform1f(uniforms[Uniform.TIME], lerp);
+	if (!pauseGL)
+	{
+		var lerp = time / 1000;
+		context.uniform1f(uniforms[Uniform.TIME], lerp);
 
-	lerp = Math.max(Math.min(frameTime/150, 1), 0);
-	shock = (1.0 - lerp) * shock + lerp * targetShock;
-	targetShock -= 0.02;
-	targetShock = Math.max(0.0, targetShock);
+		lerp = Math.max(Math.min(frameTime/150, 1), 0);
+		shock = (1.0 - lerp) * shock + lerp * targetShock;
+		targetShock -= 0.02;
+		targetShock = Math.max(0.0, targetShock);
 
-	posX = (1.0 - lerp) * posX + lerp * targetPosX;
-	posY = (1.0 - lerp) * posY + lerp * targetPosY;
-	context.uniform2f(uniforms[Uniform.MOUSE], posX, posY);
-	context.uniform1f(uniforms[Uniform.SHOCK], shock);
-	context.useProgram(program);
-	context.drawArrays(context.TRIANGLES, 0, 3);
+		posX = (1.0 - lerp) * posX + lerp * targetPosX;
+		posY = (1.0 - lerp) * posY + lerp * targetPosY;
+		context.uniform2f(uniforms[Uniform.MOUSE], posX, posY);
+		context.uniform1f(uniforms[Uniform.SHOCK], shock);
+		context.useProgram(program);
+		context.drawArrays(context.TRIANGLES, 0, 3);
+	}
 }
 

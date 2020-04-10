@@ -71,6 +71,7 @@ video
 {
 	position: absolute;
 	float:left;
+	outline: none;
 }
 
 *
@@ -197,6 +198,7 @@ img
 	--factor: 0.0;
 	--scale: 1;
 	--translate-x: 0;
+	--scroll-multiplier: 0.5;
 	overflow: hidden;
 	transform: translateX(var(--translate-x)) scale(var(--scale));
 	opacity: var(--opacity);
@@ -438,7 +440,8 @@ img
 	opacity: 0%;
 	transition: opacity 0.5s;
 	background-color: #161616;
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: scroll;
 }
 
 .fadein-frame

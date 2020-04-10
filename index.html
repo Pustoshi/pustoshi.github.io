@@ -27,7 +27,6 @@
 		<meta property="og:title" content="Dina Zhumasheva - Product Designer" />
 		<meta property="og:author" content="Dina Zhumasheva" />
 		<meta property="og:description" content="Dina Zhumasheva is a creative UX/UI product designer with 5+ years of experience, based in Stockholm. She has worked in a diverse set of companies, ranging from design studios to tech." />
-		<meta property="fb:app_id" content="PUSTOSHI"/>
 	</head>
 	<body style="padding-bottom: 50vh; margin: auto; background-color: #161616;">
 		<canvas id="canvas"></canvas>
@@ -42,8 +41,7 @@
 			<div class="react-on-scroll fade-on-scroll scale-on-scroll" style="margin-top: 70vh; position: relative; overflow: visible;">
 				<div class="row" style="padding-top:5%;">
 					<div class="col-1"></div>
-					<div class="bread-text col-11">
-						A Stockholm based designer with <span class="important-text"> 5+ years </span> of work experience. I create awesome, user-friendly and visually pleasing UX/UI experiences.
+					<div class="bread-text col-11">A Stockholm based designer with <span class="important-text"> 5+ years </span> of work experience. I create awesome, user-friendly and visually pleasing UX/UI experiences.
 					</div>
 				</div>
 				<div class="row" style="padding-top:5%;">
@@ -97,10 +95,13 @@
 				</div>
 			</div>
 		</div>
-		<div id="popup" class="popup-window"  onclick="ClosePopup()">
+		<div id="popup" class="popup-window" onclick="ClosePopup()">
 			<div class="popup-container" style="width: 100%; height:100%;"></div>
 		</div>
 	</body>
+	<script>
+		var cacheVersionString = "v=3";
+	</script>
 	<script src="raymarch.frag"></script>
 	<script src="gl.js"></script>
 	<script src="main.js"></script>

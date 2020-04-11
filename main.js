@@ -6,6 +6,14 @@
 */
 //------------------------------------------
 
+
+const CursorModes =
+	  {
+		  POINTER: 0,
+		  CROSS: 1
+	  }
+
+
 //------------------------------------------
 /**
 */
@@ -20,6 +28,36 @@ function ApplyGradient(event)
 function RemoveGradient(event)
 {
 	event.classList.remove("gradient");
+}
+
+
+//------------------------------------------
+/**
+ */
+function SetupScrollReactElements(container)
+{
+	reactToScrollElements = container.querySelectorAll(".react-on-scroll");
+	Array.prototype.forEach.call(
+		reactToScrollElements,
+		function(element)
+		{
+			// bind the scrolling window, which is the popup container, and add
+			// all the reaction classes automatically
+			element.scrollWindow = container;
+		});
+
+	// find all subpage elements with the class block-big
+	blockBigElements = container.querySelectorAll('.block-big');
+	Array.prototype.forEach.call(
+		blockBigElements,
+		function(element)
+		{
+			// bind the scrolling window, which is the popup container, and add
+			// all the reaction classes automatically
+			element.scrollWindow = container;
+			element.classList.add("react-on-scroll", "fade-on-scroll", "scale-on-scroll");
+		});
+	elementsToNotifyScroll = document.querySelectorAll('.react-on-scroll');
 }
 
 //------------------------------------------
@@ -43,31 +81,9 @@ function OpenPopup(url)
 					container.innerHTML = xhttp.responseText;
 					pauseGL = true;
 
-					var reactToScrollElements = container.querySelectorAll(".react-on-scroll");
-					Array.prototype.forEach.call(
-						reactToScrollElements,
-						function(element)
-						{
-							// bind the scrolling window, which is the popup container, and add
-							// all the reaction classes automatically
-							element.scrollWindow = container;
-						});
+					ChangeCursor(CursorModes.CROSS);
 
-					// find all subpage elements with the class block-big
-					var blockBigElements = container.querySelectorAll('.block-big');
-					Array.prototype.forEach.call(
-						blockBigElements,
-						function(element)
-						{
-							// bind the scrolling window, which is the popup container, and add
-							// all the reaction classes automatically
-							element.scrollWindow = container;
-							element.classList.add("react-on-scroll", "fade-on-scroll", "scale-on-scroll");
-						});
-
-
-					// update elements to notify list
-					elementsToNotifyScroll = document.querySelectorAll('.react-on-scroll');
+					SetupScrollReactElements(container);
 				}
 			};
 			xhttp.open("GET", url + "?" + cacheVersionString);
@@ -94,8 +110,29 @@ function ClosePopup()
 				   container.scrollTop = 0;
 				   container.removeChild(container.children[0]);
 				   popup.classList.remove("popup-window-open");
+				   ChangeCursor(CursorModes.POINTER);
 				   pauseGL = false;
 			   }, 500);
+}
+
+//------------------------------------------
+/**
+ */
+function ChangeCursor(mode)
+{
+	var doc = document.getElementById("mouse");
+	switch (mode)
+	{
+		case CursorModes.POINTER:
+		doc.innerHTML = "&#x27A4";
+		doc.style.transform = "translateX(-50%) translateY(-50%) rotateZ(-110deg)";
+		break;
+		
+		case CursorModes.CROSS:
+		doc.innerHTML = "&#x2715";
+		doc.style.transform = "translateX(-50%) translateY(-50%)";
+		break;
+	}
 }
 
 //------------------------------------------
@@ -118,20 +155,7 @@ function ReopenPopup(newUrl)
 						   container.classList.add("fadein-frame");
 						   container.innerHTML = xhttp.responseText;
 
-						   // find all subpage elements with the class block-big
-						   var subpageElements = container.querySelectorAll('.block-big');
-						   Array.prototype.forEach.call(
-							   subpageElements,
-							   function(element)
-							   {
-								   // bind the scrolling window, which is the popup container, and add
-								   // all the reaction classes automatically
-								   element.scrollWindow = container;
-								   element.classList.add("react-on-scroll", "fade-on-scroll", "scale-on-scroll");
-							   });
-
-						   // update elements to notify list
-						   elementsToNotifyScroll = document.querySelectorAll('.react-on-scroll');
+						   SetupScrollReactElements(container);
 					   }, 500);
 		}
 	};
@@ -144,17 +168,31 @@ function ReopenPopup(newUrl)
 */
 function OnScrollIn(element, callback)
 {
-
 	// get the viewport bottom value
 	var scrollPos = element.scrollWindow.scrollTop + element.scrollWindow.clientHeight;
+	
+	let style = getComputedStyle(element);
 	var elementPos = element.offsetTop;
+	var elementHeight = element.offsetHeight;
 
-	// if the viewport bottom is below the top of the element, start the effect
+	// if element is absolute positioned, find the relative parent
+	if (style.position == "absolute")
+	{
+		var parent = element.parentNode;
+		while (parent != null)
+		{
+			let parentStyle = getComputedStyle(parent);
+			elementPos += parent.offsetTop;
+			if (parentStyle.position != "absolute")
+				break;
+			parent = parent.parentNode;
+		}
+	}
+	
 	if (elementPos < scrollPos)
 	{
 		// calculate the factor, the divisor will tell how 'fast' the animation should happen
-		let style = getComputedStyle(element);
-		var factor = (scrollPos - elementPos) / (element.offsetHeight * style.getPropertyValue("--scroll-multiplier"));
+		var factor = (scrollPos - elementPos) / (elementHeight * style.getPropertyValue("--scroll-multiplier"));
 		factor = Math.min(Math.max(factor, 0), 1);
 
 		// run the callback and pass the factor
@@ -197,6 +235,16 @@ window.onload = function()
 			socket.close();
 		});
 	*/
+
+	var mouseElement = document.getElementById("mouse");
+	document.documentElement.addEventListener(
+		"mousemove",
+		function(ev)
+		{
+			mouseElement.style.left = ev.clientX + 'px';
+			mouseElement.style.top = ev.clientY + 'px';
+		});
+	
 	// this function runs whenever we need a new animation frame
 	var startTime = Date.now();
 	var frameTime = Date.now();

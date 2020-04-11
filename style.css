@@ -48,6 +48,7 @@ a
 	text-decoration: none;
 	outline: none;
 	border: none;
+	cursor: none;
 }
 
 body
@@ -161,7 +162,6 @@ img
 	font-size: var(--font-size-big);
 	position: relative;
 	letter-spacing: -0.03em;
-	cursor: pointer;
 	float: left;
 }
 
@@ -211,7 +211,7 @@ img
 
 .fade-on-scroll
 {
-	--opacity: calc(var(--scroll-factor, 1.0) * 100%);
+	--opacity: calc(var(--scroll-factor, 1.0) * 100);
 }
 
 .scroll-right-on-scroll
@@ -226,8 +226,24 @@ img
 
 @keyframes fadein-anim
 {
-	0% { opacity: 0%; }
-	100% { opacity: 100%; }
+	0% { opacity: 0; }
+	100% { opacity: 100; }
+}
+
+.mouse-cursor
+{
+	animation: gradient-anim 15s ease infinite;
+	position: fixed;
+	transform: translateX(-50%) translateY(-50%) rotateZ(-110deg);
+	font-size: 2em;
+	background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(180,217,197,1) 51%, rgba(148,187,233,1) 100%);
+	background-size: 400% 400%;
+	color: transparent;
+	left: 50vw;
+	top: 50vh;
+	font-family: Arial;
+	pointer-events: none;
+	filter: drop-shadow(rgb(0, 0, 0) 0px 0px 3px);
 }
 
 .gradient
@@ -255,7 +271,7 @@ img
 
 .fadein
 {
-	opacity: 100%;
+	opacity: 100;
 	transition: all var(--fadein-time) ease-in;
 	-webkit-transition: all var(--fadein-time) ease-in;
 	-moz-transition: all var(--fadein-time) ease-in;
@@ -264,7 +280,7 @@ img
 
 .fadeout
 {
-	opacity: 0%;
+	opacity: 0;
 	transition: all var(--fadeout-time) ease-out;
 	-webkit-transition: all var(--fadeout-time) ease-out;
 	-moz-transition: all var(--fadeout-time) ease-out;
@@ -320,7 +336,7 @@ img
 	}
 	.pop
 	{
-		opacity: 30%;
+		opacity: 30;
 		transform: translateX(0vw);
 		-webkit-transform: translateX(0vw);
 		transition: all var(--fadeout-time) ease-out;
@@ -331,7 +347,7 @@ img
 
 	.pop:hover
 	{
-		opacity: 100%;
+		opacity: 100;
 		transform: translateX(2vw);
 		-webkit-transform: translateX(2vw);
 		transition: all var(--fadeout-time) ease-out;
@@ -342,7 +358,7 @@ img
 
 	div.pop div
 	{
-		opacity: 0%;
+		opacity: 0;
 		transition: all var(--fadein-time) ease-out;
 		-webkit-transition: all var(--fadein-time) ease-out;
 		-moz-transition: all var(--fadein-time) ease-out;
@@ -351,7 +367,7 @@ img
 
 	div.pop:hover div
 	{
-		opacity: 100%;
+		opacity: 100;
 		transition: all var(--fadein-time) ease-in;
 		-webkit-transition: all var(--fadein-time) ease-in;
 		-moz-transition: all var(--fadein-time) ease-in;
@@ -370,7 +386,7 @@ img
 {
 	.pop
 	{
-		opacity: 100%;
+		opacity: 100;
 	}
 
 	.gradient-hover
@@ -381,12 +397,12 @@ img
 	/*  Make all pop child divs opaque */
 	div.pop div
 	{
-		opacity: 100%;
+		opacity: 100;
 	}
 
 	div.pop:hover div
 	{
-		opacity: 100%;
+		opacity: 100;
 	}
 
 	/* Also define the rule which hides elements which should only show if hover is enabled */
@@ -394,6 +410,11 @@ img
 	{
 		display: none;
 		pointer-events: none;
+	}
+
+	.mouse-cursor
+	{
+		display: none;
 	}
 }
 
@@ -424,6 +445,7 @@ img
 	animation: gradient-anim 15s ease infinite;
 	background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(180,217,197,1) 51%, rgba(148,187,233,1) 100%);
 	background-size: 400% 400%;
+	background-color: white;
 }
 
 .popup-window iframe
@@ -437,16 +459,17 @@ img
 
 .popup-container
 {
-	opacity: 0%;
+	opacity: 0;
 	transition: opacity 0.5s;
 	background-color: #161616;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	cursor: none;
 }
 
 .fadein-frame
 {
-	opacity: 100%;
+	opacity: 100;
 	transition: opacity 0.5s;
 }
 
@@ -458,3 +481,4 @@ img
 	border-radius: 0px;
 	transition: width 0.5s, height 0.5s 0.5s ease-out, border-color 0.5s, background-color 0.5s, border-radius 0.5s 0.5s, padding-x 0.5s;
 }
+

@@ -36,10 +36,9 @@
 
 h1.header {
   font-weight: 400;
-  margin: 7vmax;
-  font-size: 7vmax;
-  text-align: center;
+  font-size: 4vmax;
   width: 100%;
+  line-height:4.3vmax;
 }
 
 h2 {
@@ -57,6 +56,10 @@ h2 {
 
 .center {
   text-align: center;
+}
+
+.left {
+  text-align: left;
 }
 
 .gray {
@@ -119,7 +122,7 @@ a.footer{
 	transform-origin: bottom right;
 	top: -10vh;
 	left: 20vw;
-	--scroll-multiplier: 2.0;
+	--scroll-multiplier: 1.0;
 }
 
 .image-box-img

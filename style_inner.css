@@ -83,9 +83,7 @@ img {
     border-radius: 1.2vmax;
 }
 .crop {
-  margin: auto;
-  max-width: 20vmax;
-  height: auto;
+  max-width: 20vh;
   border-radius: 100%;
 }
 a.footer{
@@ -101,6 +99,16 @@ a.footer{
 .video-block{
 	position: relative;
 	width: 100%;
+	height: 100%;
+	max-height: 56.25vw !important;
+	cursor: none;
+	display: block;
+	margin: 0;
+}
+
+.video-block *
+{
+	cursor: none;
 }
 
 .image-box

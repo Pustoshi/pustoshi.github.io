@@ -62,6 +62,29 @@ function SetupScrollReactElements(container)
 
 //------------------------------------------
 /**
+ */
+function SetupInteractableElements(container)
+{
+	clickable = container.querySelectorAll(".clickable");
+	Array.prototype.forEach.call(
+		clickable,
+		function(element)
+		{
+			// bind the scrolling window, which is the popup container, and add
+			// all the reaction classes automatically
+			element.onmouseover = function()
+			{
+				ChangeCursor(CursorModes.POINTER);
+			}
+			element.onmouseout = function()
+			{
+				ChangeCursor(CursorModes.CROSS);
+			}
+		});	
+}
+
+//------------------------------------------
+/**
    Open the full-page popup
  */
 function OpenPopup(url)
@@ -84,6 +107,7 @@ function OpenPopup(url)
 					ChangeCursor(CursorModes.CROSS);
 
 					SetupScrollReactElements(container);
+					SetupInteractableElements(container);
 				}
 			};
 			xhttp.open("GET", url + "?" + cacheVersionString);
@@ -144,6 +168,7 @@ function ReopenPopup(newUrl)
 	var popup = document.getElementById("popup");
 	var container = popup.children[0];
 	var xhttp = new XMLHttpRequest();
+	ChangeCursor(CursorModes.CROSS);
 	xhttp.onreadystatechange = function()
 	{
 		if (this.readyState == 4 && this.status == 200)
@@ -156,6 +181,7 @@ function ReopenPopup(newUrl)
 						   container.innerHTML = xhttp.responseText;
 
 						   SetupScrollReactElements(container);
+						   SetupInteractableElements(container);
 					   }, 500);
 		}
 	};

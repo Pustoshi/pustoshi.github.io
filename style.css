@@ -33,8 +33,8 @@ h2{
 	--font-size-tiny: 1.5vmax;
 	--fast-fade-time: 0.5s;
 
-	--font-size-subpage-big: 4vmax;
-	--font-size-subpage-medium: 4vmax;
+	--font-size-subpage-big: 8vmax;
+	--font-size-subpage-medium: 3.5vmax;
 	--font-size-subpage-small: 2vmax;
 	--font-size-subpage-tiny: 1.6vmax;
 	--line-height-subpage-big: 4.8vmax;
@@ -62,14 +62,14 @@ h2{
 		--font-size-tiny: 20px;
 		--fast-fade-time: 0.5s;
 
-		--font-size-subpage-big: 50px;
-		--font-size-subpage-medium: 40px;
+		--font-size-subpage-big: 80px;
+		--font-size-subpage-medium: 35px;
 		--font-size-subpage-small: 20px;
 		--font-size-subpage-tiny: 16px;
-		--line-height-subpage-big: 40px;
-		--line-height-subpage-medium: 40px;
-		--line-height-subpage-small: 20px;
-		--line-height-subpage-tiny: 5px;
+		--line-height-subpage-big: 48px;
+		--line-height-subpage-medium: 43px;
+		--line-height-subpage-small: 25px;
+		--line-height-subpage-tiny: 15px;
 
 		--margin-subpage-block-big: 60px;
 		--margin-subpage-block-medium: 20px;

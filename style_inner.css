@@ -42,15 +42,14 @@ h1 {
   font-weight: 1;
 }
 
-span
+p
 {
 	font-size: var(--font-size-subpage-small);
 	line-height: var(--line-height-subpage-small);
-	width: 100%;
-	display: block;
+	margin: 0;
 }
 
-span.small
+p.small
 {
 	font-size: var(--font-size-subpage-tiny);
 }
@@ -81,15 +80,6 @@ h2 {
 }
 .white {
   color: #fff;
-}
-
-p {
-  font-size: var(--font-size-subpage-medium);
-  font-weight: 400;
-  width: 100%;
-  text-align: left;
-  color: #969696;
-  text-align: left;
 }
 
 img {

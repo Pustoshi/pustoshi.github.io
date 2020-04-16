@@ -20,11 +20,6 @@
 	src: url('font/Wremena\ Bold.otf') format('opentype');
 }
 
-h1.center{
-	font-size: 7vmax;
-	text-align: left;
-}
-
 h2{
 	font-size: 6vmax;
 }
@@ -34,12 +29,55 @@ h2{
 	--fadein-time: 1.5s;
 	--font-size-big: 7vmax;
 	--font-size-medium: 4vmax;
-	--font-size-small: 2vmax;
+	--font-size-small: 2.5vmax;
 	--font-size-tiny: 1.5vmax;
 	--fast-fade-time: 0.5s;
 
+	--font-size-subpage-big: 4vmax;
+	--font-size-subpage-medium: 4vmax;
+	--font-size-subpage-small: 2vmax;
+	--font-size-subpage-tiny: 1.6vmax;
+	--line-height-subpage-big: 4.8vmax;
+	--line-height-subpage-medium: 4.3vmax;
+	--line-height-subpage-small: 2.5vmax;
+	--line-height-subpage-tiny: 1.5vmax;
+
+	--margin-subpage-block-big: 10vmax;
+	--margin-subpage-block-medium: 5vmax;
+	--margin-subpage-block-small: 3vmax;
+	
 	--title-font: Arial;
 	--text-font: Arial;
+}
+
+@media screen and (min-width: 1000px)
+{
+	:root
+	{
+		--fadeout-time: 1s;
+		--fadein-time: 1.5s;
+		--font-size-big: 80px;
+		--font-size-medium: 50px;
+		--font-size-small: 2.5vmax;
+		--font-size-tiny: 20px;
+		--fast-fade-time: 0.5s;
+
+		--font-size-subpage-big: 50px;
+		--font-size-subpage-medium: 40px;
+		--font-size-subpage-small: 20px;
+		--font-size-subpage-tiny: 16px;
+		--line-height-subpage-big: 40px;
+		--line-height-subpage-medium: 40px;
+		--line-height-subpage-small: 20px;
+		--line-height-subpage-tiny: 5px;
+
+		--margin-subpage-block-big: 60px;
+		--margin-subpage-block-medium: 20px;
+		--margin-subpage-block-small: 14px;		
+
+		--title-font: Arial;
+		--text-font: Arial;
+	}	
 }
 
 a
@@ -55,7 +93,7 @@ body
 {
 	background-color: #161616;
 	font-family: Arial;
-	font-size: 1em;
+	font-size: 2vw;
 	color: white;
 
 	--scrollbar-width: calc(100vw - 100%);
@@ -211,7 +249,7 @@ img
 
 .fade-on-scroll
 {
-	--opacity: calc(var(--scroll-factor, 1.0) * 100);
+	--opacity: calc(var(--scroll-factor, 1.0));
 }
 
 .scroll-right-on-scroll
@@ -235,7 +273,7 @@ img
 	animation: gradient-anim 15s ease infinite;
 	position: fixed;
 	transform: translateX(-50%) translateY(-50%) rotateZ(-110deg);
-	font-size: 2em;
+	font-size: 2vmax;
 	background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(180,217,197,1) 51%, rgba(148,187,233,1) 100%);
 	background-size: 400% 400%;
 	color: transparent;
@@ -309,34 +347,9 @@ img
 
 @media (hover: hover)
 {
-	.gradient-hover *
-	{
-		animation: gradient-anim 15s ease infinite;
-		background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(180,217,197,1) 51%, rgba(148,187,233,1) 100%);
-		background-size: 400% 400%;
-		background-clip: text;
-		-webkit-background-clip: text;
-		-moz-background-clip: text;
-		-o-background-clip: text;
-		color: white;
-
-		transition: all var(--fadeout-time) ease-out;
-		-webkit-transition: all var(--fadeout-time) ease-out;
-		-moz-transition: all var(--fadeout-time) ease-out;
-		-o-transition: all var(--fadeout-time) ease-out;
-	}
-
-	.gradient-hover:hover *
-	{
-		color: transparent;
-		transition: all var(--fadeout-time) ease-out;
-		-webkit-transition: all var(--fadeout-time) ease-out;
-		-moz-transition: all var(--fadeout-time) ease-out;
-		-o-transition: all var(--fadeout-time) ease-out;
-	}
 	.pop
 	{
-		opacity: 30;
+		opacity: 0.3;
 		transform: translateX(0vw);
 		-webkit-transform: translateX(0vw);
 		transition: all var(--fadeout-time) ease-out;
@@ -347,7 +360,7 @@ img
 
 	.pop:hover
 	{
-		opacity: 100;
+		opacity: 1;
 		transform: translateX(2vw);
 		-webkit-transform: translateX(2vw);
 		transition: all var(--fadeout-time) ease-out;
@@ -367,11 +380,38 @@ img
 
 	div.pop:hover div
 	{
-		opacity: 100;
+		opacity: 1;
 		transition: all var(--fadein-time) ease-in;
 		-webkit-transition: all var(--fadein-time) ease-in;
 		-moz-transition: all var(--fadein-time) ease-in;
 		-o-transition: all var(--fadein-time) ease-in;
+	}
+	
+	.gradient-hover *
+	{
+		animation: gradient-anim 15s ease infinite;
+		background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(180,217,197,1) 51%, rgba(148,187,233,1) 100%);
+		background-size: 400% 400%;
+		background-clip: text;
+		-webkit-background-clip: text;
+		-moz-background-clip: text;
+		-o-background-clip: text;
+		color: white;
+		background-color: transparent;
+
+		transition: all var(--fadeout-time) ease-out;
+		-webkit-transition: all var(--fadeout-time) ease-out;
+		-moz-transition: all var(--fadeout-time) ease-out;
+		-o-transition: all var(--fadeout-time) ease-out;
+	}
+
+	.gradient-hover:hover *
+	{
+		color: transparent;
+		transition: all var(--fadeout-time) ease-out;
+		-webkit-transition: all var(--fadeout-time) ease-out;
+		-moz-transition: all var(--fadeout-time) ease-out;
+		-o-transition: all var(--fadeout-time) ease-out;
 	}
 
 	.must-support-hover
@@ -386,7 +426,7 @@ img
 {
 	.pop
 	{
-		opacity: 100;
+		opacity: 1;
 	}
 
 	.gradient-hover
@@ -397,12 +437,12 @@ img
 	/*  Make all pop child divs opaque */
 	div.pop div
 	{
-		opacity: 100;
+		opacity: 1;
 	}
 
 	div.pop:hover div
 	{
-		opacity: 100;
+		opacity: 1;
 	}
 
 	/* Also define the rule which hides elements which should only show if hover is enabled */
@@ -413,6 +453,11 @@ img
 	}
 
 	.mouse-cursor
+	{
+		display: none;
+	}
+
+	.arrow
 	{
 		display: none;
 	}
@@ -469,7 +514,7 @@ img
 
 .fadein-frame
 {
-	opacity: 100;
+	opacity: 1;
 	transition: opacity 0.5s;
 }
 

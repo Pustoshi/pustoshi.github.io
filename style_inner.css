@@ -20,33 +20,47 @@
 }
 
 .block-big {
-  margin-bottom: 10vmax;
-  margin-top: 10vmax;
+ /* margin-bottom: var(--margin-subpage-block-big);*/
+  margin-top: var(--margin-subpage-block-big);
 }
 
 .block-medium {
-  margin-bottom: 5vmax;
-  margin-top: 5vmax;
+/*  margin-bottom: var(--margin-subpage-block-medium);*/
+  margin-top: var(--margin-subpage-block-medium);
 }
 
 .block-small {
-  margin-bottom: 3vmax;
-  margin-top: 3vmax;
+/*  margin-bottom: var(--margin-subpage-block-small);*/
+  margin-top: var(--margin-subpage-block-small);
 }
 
-h1.header {
-  font-weight: 400;
-  font-size: 4vmax;
+h1 {
+  font-size: var(--font-size-subpage-medium);
   width: 100%;
-  line-height:4.3vmax;
+  line-height: var(--line-height-subpage-medium);
+  margin-bottom: 1vh;
+  font-weight: 1;
+}
+
+span
+{
+	font-size: var(--font-size-subpage-small);
+	line-height: var(--line-height-subpage-small);
+	width: 100%;
+	display: block;
+}
+
+span.small
+{
+	font-size: var(--font-size-subpage-tiny);
 }
 
 h2 {
   font-weight: 400;
-  font-size: 2.4vmax;
+  font-size: var(--font-size-subpage-medium);
   width: 100%;
   text-align: left;
-  line-height: 2.6vmax;
+  line-height: var(--line-height-subpage-medium);
   margin: 0.2vmax;
 }
 
@@ -70,7 +84,7 @@ h2 {
 }
 
 p {
-  font-size: 1.2vmax;
+  font-size: var(--font-size-subpage-medium);
   font-weight: 400;
   width: 100%;
   text-align: left;
@@ -84,6 +98,7 @@ img {
 
 .round-corners {
     border-radius: 1.2vmax;
+	margin-top: 1vh;
 }
 .crop {
   max-width: 20vh;
@@ -93,7 +108,7 @@ a.footer{
   color: #CC3D00;
   font-weight: 400;
   margin: 7vmax;
-  font-size: 7vmax;
+  font-size: var(--font-size-subpage-big);
   text-align: center;
   width: 100%;
   cursor: none;
